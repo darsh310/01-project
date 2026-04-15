@@ -10,9 +10,9 @@ public class App {
         server.createContext("/", exchange -> {
             String response = "Hello from Jenkins + ECR 🚀";
             exchange.sendResponseHeaders(200, response.length());
-            OutputStream os = exchange.getResponseBody();
-            os.write(response.getBytes());
-            os.close();
+            try (OutputStream os = exchange.getResponseBody()) {
+                os.write(response.getBytes());
+            }
         });
         server.start();
         System.out.println("Server started on port 8080");
