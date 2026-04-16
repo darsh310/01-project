@@ -8,11 +8,14 @@
     <groupId>com.example</groupId>
     <artifactId>simple-java-app</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
 
+    <!-- IMPORTANT: ensures correct jar name -->
     <build>
+        <finalName>app</finalName>
+
         <plugins>
-            <!-- Compiler plugin to set Java version -->
+
+            <!-- Java compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -23,7 +26,7 @@
                 </configuration>
             </plugin>
 
-            <!-- JAR plugin to set main class -->
+            <!-- Manifest main class fix -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -36,6 +39,7 @@
                     </archive>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
